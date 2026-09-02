@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.finflow.enterprise</groupId>
+    <artifactId>finflow-enterprise-parent</artifactId>
+    <version>2.4.0</version>
+    <packaging>pom</packaging>
+
+    <name>FinFlow Enterprise Parent</name>
+    <description>Enterprise FinTech Financial Operations &amp; Expense Workflow Platform</description>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.boot.version>3.3.1</spring.boot.version>
+    </properties>
+
+    <modules>
+        <module>finflow-common</module>
+        <module>finflow-auth</module>
+        <module>finflow-users</module>
+        <module>finflow-expenses</module>
+        <module>finflow-bills</module>
+        <module>finflow-approvals</module>
+        <module>finflow-budgets</module>
+        <module>finflow-payments</module>
+        <module>finflow-vendors</module>
+        <module>finflow-notifications</module>
+        <module>finflow-audit</module>
+        <module>finflow-reporting</module>
+        <module>finflow-files</module>
+        <module>finflow-application</module>
+        <module>finflow-tests</module>
+    </modules>
+</project>
