@@ -1,0 +1,28 @@
+{
+  "name": "finflow-enterprise",
+  "version": "2.4.0",
+  "private": true,
+  "description": "FinFlow Enterprise — Internal Financial Operations & Expense Workflow Platform",
+  "main": "frontend/src/index.tsx",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "cd frontend && npm test",
+    "preview": "cd frontend && npm run preview",
+    "backend:build": "cd backend && mvn clean install -DskipTests",
+    "backend:run": "cd backend && mvn spring-boot:run -pl finflow-application"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.344.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.1.6",
+    "vitest": "^1.4.0"
+  }
+}
