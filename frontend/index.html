@@ -1,95 +1,1149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FinFlow Enterprise — Internal Financial Operations</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-slate-950 text-slate-100 antialiased font-sans">
-    <div id="root" class="min-h-screen flex flex-col">
-      <!-- Header -->
-      <header class="h-16 border-b border-slate-800 px-6 flex items-center justify-between bg-slate-900/50 backdrop-blur sticky top-0 z-50">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-bold text-emerald-400">FF</div>
-          <span class="font-bold tracking-tight text-white text-lg">FinFlow Enterprise</span>
-          <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">v2.4.0</span>
-        </div>
-        <div class="flex items-center gap-4">
-          <span class="text-xs text-slate-400 font-mono">Role: FINANCE_ADMIN</span>
-          <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs font-semibold">GM</div>
-        </div>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinFlow Enterprise — Multi-Role Financial Operations Platform</title>
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-950">
 
-      <!-- Main Content -->
-      <main class="flex-1 max-w-7xl w-full mx-auto p-6 space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl">
-            <span class="text-xs uppercase text-slate-400 font-semibold">Pending Claims</span>
-            <div class="text-2xl font-bold font-mono text-emerald-400 mt-2">$24,850.00</div>
-            <span class="text-xs text-slate-500 mt-1 block">12 claims awaiting review</span>
-          </div>
-          <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl">
-            <span class="text-xs uppercase text-slate-400 font-semibold">Department Budget</span>
-            <div class="text-2xl font-bold font-mono text-white mt-2">$500,000.00</div>
-            <span class="text-xs text-emerald-400 mt-1 block">68% consumed (Healthy)</span>
-          </div>
-          <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl">
-            <span class="text-xs uppercase text-slate-400 font-semibold">Vendor Invoices Due</span>
-            <div class="text-2xl font-bold font-mono text-amber-400 mt-2">$84,120.00</div>
-            <span class="text-xs text-slate-500 mt-1 block">5 bills scheduled this week</span>
-          </div>
-          <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl">
-            <span class="text-xs uppercase text-slate-400 font-semibold">Settlement Queue</span>
-            <div class="text-2xl font-bold font-mono text-cyan-400 mt-2">$18,400.00</div>
-            <span class="text-xs text-slate-500 mt-1 block">Automated ACH batch ready</span>
-          </div>
-        </div>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
-          <h3 class="text-lg font-bold text-white mb-4">Enterprise Financial Ledger &amp; Approval Matrix</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm text-slate-300">
-              <thead class="text-xs uppercase bg-slate-950 text-slate-400 border-b border-slate-800 font-mono">
-                <tr>
-                  <th class="py-3 px-4">Claim ID</th>
-                  <th class="py-3 px-4">Employee</th>
-                  <th class="py-3 px-4">Category</th>
-                  <th class="py-3 px-4">Cost Center</th>
-                  <th class="py-3 px-4">Amount</th>
-                  <th class="py-3 px-4">Status</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
-                <tr class="hover:bg-slate-800/30">
-                  <td class="py-3 px-4 text-emerald-400">EXP-2026-0891</td>
-                  <td class="py-3 px-4">Sarah Jenkins (Eng)</td>
-                  <td class="py-3 px-4">AWS Cloud Infra</td>
-                  <td class="py-3 px-4">CC-ENG-402</td>
-                  <td class="py-3 px-4">$4,250.00</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">APPROVED</span></td>
-                </tr>
-                <tr class="hover:bg-slate-800/30">
-                  <td class="py-3 px-4 text-emerald-400">EXP-2026-0892</td>
-                  <td class="py-3 px-4">David Chen (Design)</td>
-                  <td class="py-3 px-4">Figma Enterprise</td>
-                  <td class="py-3 px-4">CC-DES-105</td>
-                  <td class="py-3 px-4">$1,800.00</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-400 border border-amber-800">FINANCE_REVIEW</span></td>
-                </tr>
-                <tr class="hover:bg-slate-800/30">
-                  <td class="py-3 px-4 text-emerald-400">EXP-2026-0893</td>
-                  <td class="py-3 px-4">Marcus Aurelius (Exec)</td>
-                  <td class="py-3 px-4">Offsite Summit</td>
-                  <td class="py-3 px-4">CC-EXEC-001</td>
-                  <td class="py-3 px-4">$12,400.00</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800">MANAGER_APPROVED</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </main>
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-emerald-950/80 via-slate-900 to-cyan-950/80 border-b border-emerald-900/40 px-6 py-2 text-xs flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">ENTERPRISE SAAS</span>
+      <span class="text-slate-300">FinFlow Enterprise v2.4.0 — Multi-Role Financial Operations & Expense Workflow</span>
     </div>
-  </body>
+    <div class="flex items-center gap-4 text-slate-400">
+      <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> GAAP & SOC2 Compliant</span>
+      <span class="flex items-center gap-1.5"><i data-lucide="database" class="w-3.5 h-3.5 text-cyan-400"></i> PostgreSQL + Redis Active</span>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="h-16 border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-40 px-6 flex items-center justify-between">
+    <!-- Brand -->
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('dashboard')">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 text-slate-950 font-black text-base">FF</div>
+        <div>
+          <span class="font-extrabold tracking-tight text-white text-lg">FinFlow</span>
+          <span class="text-xs font-semibold text-emerald-400 ml-1 tracking-wider uppercase">Enterprise</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="hidden md:flex items-center gap-1 border-l border-slate-800 pl-6 text-xs font-medium">
+        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn px-3 py-2 rounded-lg text-emerald-400 bg-slate-800/80 transition-all flex items-center gap-1.5">
+          <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
+        </button>
+        <button onclick="switchTab('expenses')" id="nav-expenses" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all flex items-center gap-1.5">
+          <i data-lucide="receipt" class="w-4 h-4"></i> Expenses <span id="badge-expenses" class="ml-1 px-1.5 py-0.2 rounded-full bg-slate-800 text-[10px] text-slate-300">3</span>
+        </button>
+        <button onclick="switchTab('approvals')" id="nav-approvals" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all flex items-center gap-1.5">
+          <i data-lucide="check-circle" class="w-4 h-4"></i> Approvals <span id="badge-approvals" class="ml-1 px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 text-[10px] border border-amber-500/30">2</span>
+        </button>
+        <button onclick="switchTab('bills')" id="nav-bills" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all flex items-center gap-1.5">
+          <i data-lucide="file-text" class="w-4 h-4"></i> Vendor Bills
+        </button>
+        <button onclick="switchTab('budgets')" id="nav-budgets" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all flex items-center gap-1.5">
+          <i data-lucide="pie-chart" class="w-4 h-4"></i> Budgets
+        </button>
+        <button onclick="switchTab('payments')" id="nav-payments" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all flex items-center gap-1.5">
+          <i data-lucide="credit-card" class="w-4 h-4"></i> Settlement
+        </button>
+        <button onclick="switchTab('reports')" id="nav-reports" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all flex items-center gap-1.5">
+          <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Reports
+        </button>
+        <button onclick="switchTab('audit')" id="nav-audit" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all flex items-center gap-1.5">
+          <i data-lucide="shield-alert" class="w-4 h-4"></i> Audit Log
+        </button>
+      </nav>
+    </div>
+
+    <!-- Role Switcher & Profile Controller -->
+    <div class="flex items-center gap-4">
+      <!-- Role Persona Selector -->
+      <div class="flex items-center bg-slate-950 border border-slate-800 p-1 rounded-xl">
+        <span class="text-[11px] uppercase font-bold text-slate-400 px-2.5 flex items-center gap-1.5">
+          <i data-lucide="user-check" class="w-3.5 h-3.5 text-emerald-400"></i> Role:
+        </span>
+        <select id="roleSelector" onchange="changeRole(this.value)" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-1 font-semibold focus:outline-none focus:border-emerald-500 cursor-pointer">
+          <option value="EMPLOYEE">Employee (Sarah Jenkins)</option>
+          <option value="MANAGER">Manager (Marcus Aurelius)</option>
+          <option value="FINANCE_ADMIN" selected>Finance Admin (Gandhiko Marala)</option>
+          <option value="AUDITOR">Auditor (Internal Compliance)</option>
+        </select>
+      </div>
+
+      <!-- Quick Action: Submit Expense -->
+      <button onclick="openModal('expenseModal')" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg text-xs flex items-center gap-1.5 shadow-lg shadow-emerald-600/20 transition-all">
+        <i data-lucide="plus" class="w-4 h-4"></i> New Expense
+      </button>
+    </div>
+  </header>
+
+  <!-- Notification Toast Area -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Primary Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-6 space-y-6">
+
+    <!-- Role Context Banner -->
+    <div id="roleBanner" class="p-4 rounded-xl border border-slate-800 bg-slate-900/40 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div id="roleAvatar" class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-bold text-emerald-400 text-sm">FA</div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 id="roleName" class="text-sm font-bold text-white">Gandhiko Marala</h2>
+            <span id="roleTag" class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-950 text-emerald-400 border border-emerald-800">FINANCE_ADMIN</span>
+          </div>
+          <p id="roleDescription" class="text-xs text-slate-400 mt-0.5">Full financial oversight, vendor bill payments, budget allocations, final reimbursement settlements, and audit inspection.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-slate-400 font-mono">Cost Center: <strong class="text-white">CC-CORP-001</strong></span>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 1: DASHBOARD                                                     -->
+    <!-- ===================================================================== -->
+    <section id="tab-dashboard" class="tab-content space-y-6">
+      <!-- 4 Key Financial Metrics -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-5 bg-slate-900/80 border border-slate-800 rounded-2xl relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+          <div class="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+            <span>Pending Approvals</span>
+            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400"><i data-lucide="clock" class="w-4 h-4"></i></div>
+          </div>
+          <div id="kpi-pending-claims" class="text-2xl font-extrabold font-mono text-white mt-3">$24,850.00</div>
+          <div class="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <span id="kpi-pending-count" class="text-amber-400 font-semibold">2 claims</span> awaiting action
+          </div>
+        </div>
+
+        <div class="p-5 bg-slate-900/80 border border-slate-800 rounded-2xl relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+          <div class="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+            <span>Department Budget</span>
+            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400"><i data-lucide="wallet" class="w-4 h-4"></i></div>
+          </div>
+          <div class="text-2xl font-extrabold font-mono text-white mt-3">$500,000.00</div>
+          <div class="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <span class="text-emerald-400 font-semibold">$340,000.00</span> spent (68% utilized)
+          </div>
+        </div>
+
+        <div class="p-5 bg-slate-900/80 border border-slate-800 rounded-2xl relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+          <div class="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+            <span>Vendor Bills Due</span>
+            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400"><i data-lucide="receipt" class="w-4 h-4"></i></div>
+          </div>
+          <div id="kpi-bills-due" class="text-2xl font-extrabold font-mono text-white mt-3">$84,120.00</div>
+          <div class="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <span class="text-cyan-400 font-semibold">5 invoices</span> due this month
+          </div>
+        </div>
+
+        <div class="p-5 bg-slate-900/80 border border-slate-800 rounded-2xl relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+          <div class="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+            <span>Settlement Queue</span>
+            <div class="p-2 rounded-lg bg-purple-500/10 text-purple-400"><i data-lucide="credit-card" class="w-4 h-4"></i></div>
+          </div>
+          <div id="kpi-settlement-queue" class="text-2xl font-extrabold font-mono text-white mt-3">$18,400.00</div>
+          <div class="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <span class="text-purple-400 font-semibold">ACH Batch</span> ready for payout
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div onclick="openModal('expenseModal')" class="p-4 bg-slate-900/60 border border-slate-800 hover:border-emerald-500/50 rounded-xl cursor-pointer transition-all flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold"><i data-lucide="plus-circle" class="w-5 h-5"></i></div>
+          <div>
+            <h4 class="text-sm font-semibold text-white">Submit New Expense</h4>
+            <p class="text-xs text-slate-400">File claim with receipts & cost center</p>
+          </div>
+        </div>
+        <div onclick="openModal('billModal')" class="p-4 bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 rounded-xl cursor-pointer transition-all flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold"><i data-lucide="file-plus" class="w-5 h-5"></i></div>
+          <div>
+            <h4 class="text-sm font-semibold text-white">Record Vendor Bill</h4>
+            <p class="text-xs text-slate-400">Add invoice & recurring schedule</p>
+          </div>
+        </div>
+        <div onclick="exportToCSV()" class="p-4 bg-slate-900/60 border border-slate-800 hover:border-purple-500/50 rounded-xl cursor-pointer transition-all flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold"><i data-lucide="download" class="w-5 h-5"></i></div>
+          <div>
+            <h4 class="text-sm font-semibold text-white">Export Financial Reports</h4>
+            <p class="text-xs text-slate-400">Download formatted Excel / CSV ledger</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Recent Expenses Table in Dashboard -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-base font-bold text-white flex items-center gap-2">
+              <i data-lucide="activity" class="w-4 h-4 text-emerald-400"></i> Active Expense Claims & Approval Flow
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">Real-time status tracking across multi-stage approval matrices</p>
+          </div>
+          <button onclick="switchTab('expenses')" class="text-xs text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+            View All <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-slate-300">
+            <thead class="text-xs uppercase bg-slate-950/80 text-slate-400 border-b border-slate-800 font-mono">
+              <tr>
+                <th class="py-3 px-4">Claim ID</th>
+                <th class="py-3 px-4">Employee</th>
+                <th class="py-3 px-4">Category</th>
+                <th class="py-3 px-4">Cost Center</th>
+                <th class="py-3 px-4">Amount</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dashboardExpensesTbody" class="divide-y divide-slate-800/50 font-mono text-xs">
+              <!-- Dynamically Populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 2: EXPENSES (FULL CRUD)                                          -->
+    <!-- ===================================================================== -->
+    <section id="tab-expenses" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="receipt" class="w-5 h-5 text-emerald-400"></i> Expense Claim Management
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Submit claims, upload receipts, and monitor reimbursement lifecycle</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="exportToCSV()" class="bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i> Export CSV
+          </button>
+          <button onclick="openModal('expenseModal')" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg text-xs flex items-center gap-1.5 shadow-lg shadow-emerald-600/20 transition-all">
+            <i data-lucide="plus" class="w-4 h-4"></i> Create Expense
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl flex flex-wrap items-center justify-between gap-4 text-xs">
+        <div class="flex items-center gap-2 flex-1 max-w-md">
+          <i data-lucide="search" class="w-4 h-4 text-slate-500"></i>
+          <input type="text" id="expenseSearch" oninput="filterExpenses()" placeholder="Search claims by ID, merchant, employee, or cost center..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 focus:outline-none focus:border-emerald-500" />
+        </div>
+        <div class="flex items-center gap-3">
+          <select id="expenseStatusFilter" onchange="filterExpenses()" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-300 focus:outline-none focus:border-emerald-500 cursor-pointer">
+            <option value="ALL">All Statuses</option>
+            <option value="DRAFT">Draft</option>
+            <option value="SUBMITTED">Submitted</option>
+            <option value="MANAGER_APPROVED">Manager Approved</option>
+            <option value="FINANCE_REVIEW">Finance Review</option>
+            <option value="APPROVED">Approved</option>
+            <option value="REJECTED">Rejected</option>
+            <option value="REIMBURSED">Reimbursed</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Full Expense Table -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="text-xs uppercase bg-slate-950 text-slate-400 border-b border-slate-800 font-mono">
+            <tr>
+              <th class="py-3 px-4">Claim ID</th>
+              <th class="py-3 px-4">Date</th>
+              <th class="py-3 px-4">Employee</th>
+              <th class="py-3 px-4">Merchant / Purpose</th>
+              <th class="py-3 px-4">Category</th>
+              <th class="py-3 px-4">Cost Center</th>
+              <th class="py-3 px-4">Amount</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="fullExpensesTbody" class="divide-y divide-slate-800/50 font-mono text-xs">
+            <!-- Dynamically Populated -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 3: APPROVAL INBOX (MANAGER & FINANCE)                            -->
+    <!-- ===================================================================== -->
+    <section id="tab-approvals" class="tab-content hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5 text-amber-400"></i> Multi-Tier Approval Inbox
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Review, approve, or reject employee expense claims based on configurable thresholds</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4" id="approvalsList">
+        <!-- Dynamically Populated -->
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 4: VENDOR BILLS                                                  -->
+    <!-- ===================================================================== -->
+    <section id="tab-bills" class="tab-content hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="file-text" class="w-5 h-5 text-cyan-400"></i> Vendor Bills & Recurring Subscriptions
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Manage software SaaS licenses, hardware procurement invoices, and recurring bill schedules</p>
+        </div>
+        <button onclick="openModal('billModal')" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg text-xs flex items-center gap-1.5 shadow-lg shadow-cyan-600/20 transition-all">
+          <i data-lucide="plus" class="w-4 h-4"></i> Add Vendor Bill
+        </button>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="text-xs uppercase bg-slate-950 text-slate-400 border-b border-slate-800 font-mono">
+            <tr>
+              <th class="py-3 px-4">Invoice #</th>
+              <th class="py-3 px-4">Vendor</th>
+              <th class="py-3 px-4">Category</th>
+              <th class="py-3 px-4">Due Date</th>
+              <th class="py-3 px-4">Schedule</th>
+              <th class="py-3 px-4">Amount</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="billsTbody" class="divide-y divide-slate-800/50 font-mono text-xs">
+            <!-- Dynamically Populated -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 5: BUDGETS                                                       -->
+    <!-- ===================================================================== -->
+    <section id="tab-budgets" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <i data-lucide="pie-chart" class="w-5 h-5 text-emerald-400"></i> Department & Project Budgets
+        </h2>
+        <p class="text-xs text-slate-400 mt-0.5">Real-time budget allocation, consumption tracking, and threshold enforcers</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="budgetsGrid">
+        <!-- Dynamically Populated -->
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 6: SETTLEMENT QUEUE                                              -->
+    <!-- ===================================================================== -->
+    <section id="tab-payments" class="tab-content hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="credit-card" class="w-5 h-5 text-purple-400"></i> Reimbursement & Payout Settlement Queue
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Execute batch ACH / Direct Deposit settlements for approved expenses</p>
+        </div>
+        <button onclick="settleAllApproved()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 shadow-lg shadow-purple-600/30 transition-all">
+          <i data-lucide="send" class="w-4 h-4"></i> Disburse All Approved Payouts
+        </button>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="text-xs uppercase bg-slate-950 text-slate-400 border-b border-slate-800 font-mono">
+            <tr>
+              <th class="py-3 px-4">Claim ID</th>
+              <th class="py-3 px-4">Beneficiary</th>
+              <th class="py-3 px-4">Bank Token Ref</th>
+              <th class="py-3 px-4">Category</th>
+              <th class="py-3 px-4">Amount</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="settlementTbody" class="divide-y divide-slate-800/50 font-mono text-xs">
+            <!-- Dynamically Populated -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 7: REPORTS & EXPORT                                              -->
+    <!-- ===================================================================== -->
+    <section id="tab-reports" class="tab-content hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-emerald-400"></i> Financial Reports & Export Center
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Download GAAP-compliant general ledger extracts and category spend analytics</p>
+        </div>
+        <button onclick="exportToCSV()" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition-all">
+          <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Download Comprehensive Excel / CSV
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-slate-900/90 border border-slate-800 rounded-2xl space-y-4">
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider">Spend by Expense Category</h3>
+          <div class="space-y-3 font-mono text-xs">
+            <div>
+              <div class="flex justify-between mb-1"><span>AWS & Cloud Infrastructure</span> <span class="text-emerald-400">$18,400.00</span></div>
+              <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden"><div class="bg-emerald-500 h-full w-[65%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>Travel & Executive Offsites</span> <span class="text-cyan-400">$14,200.00</span></div>
+              <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden"><div class="bg-cyan-500 h-full w-[45%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>Software & Design Subscriptions</span> <span class="text-purple-400">$8,900.00</span></div>
+              <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden"><div class="bg-purple-500 h-full w-[30%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>Hardware & Peripherals</span> <span class="text-amber-400">$4,500.00</span></div>
+              <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden"><div class="bg-amber-500 h-full w-[15%]"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 bg-slate-900/90 border border-slate-800 rounded-2xl space-y-4">
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider">Spend by Department</h3>
+          <div class="space-y-3 font-mono text-xs">
+            <div>
+              <div class="flex justify-between mb-1"><span>Engineering (CC-ENG-402)</span> <span class="text-emerald-400">$28,500.00</span></div>
+              <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden"><div class="bg-emerald-500 h-full w-[70%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>Executive (CC-EXEC-001)</span> <span class="text-cyan-400">$12,400.00</span></div>
+              <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden"><div class="bg-cyan-500 h-full w-[40%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>Product & Design (CC-DES-105)</span> <span class="text-purple-400">$5,100.00</span></div>
+              <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden"><div class="bg-purple-500 h-full w-[20%]"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 8: IMMUTABLE AUDIT LOGS                                          -->
+    <!-- ===================================================================== -->
+    <section id="tab-audit" class="tab-content hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-emerald-400"></i> Immutable Financial Audit Ledger
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Append-only audit trail logging actors, state transitions, IP metadata, and timestamps</p>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="text-xs uppercase bg-slate-950 text-slate-400 border-b border-slate-800 font-mono">
+            <tr>
+              <th class="py-3 px-4">Event ID</th>
+              <th class="py-3 px-4">Timestamp (UTC)</th>
+              <th class="py-3 px-4">Actor</th>
+              <th class="py-3 px-4">Action</th>
+              <th class="py-3 px-4">Entity</th>
+              <th class="py-3 px-4">State Transition</th>
+            </tr>
+          </thead>
+          <tbody id="auditLogsTbody" class="divide-y divide-slate-800/50 font-mono text-xs">
+            <!-- Dynamically Populated -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 1: CREATE EXPENSE CLAIM                                         -->
+  <!-- ===================================================================== -->
+  <div id="expenseModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i data-lucide="receipt" class="w-4 h-4 text-emerald-400"></i> Submit New Expense Claim
+        </h3>
+        <button onclick="closeModal('expenseModal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form id="expenseForm" onsubmit="handleCreateExpense(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Merchant / Vendor / Purpose *</label>
+          <input type="text" id="expMerchant" required placeholder="e.g. AWS Cloud Services, Hotel Indigo, JetBlue Flights" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-emerald-500" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Amount *</label>
+            <input type="number" step="0.01" id="expAmount" required placeholder="0.00" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white font-mono focus:outline-none focus:border-emerald-500" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Currency *</label>
+            <select id="expCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-emerald-500">
+              <option value="USD">USD ($)</option>
+              <option value="INR">INR (₹)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Category *</label>
+            <select id="expCategory" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-emerald-500">
+              <option value="Software & Cloud">Software & Cloud</option>
+              <option value="Travel & Lodging">Travel & Lodging</option>
+              <option value="Meals & Entertainment">Meals & Entertainment</option>
+              <option value="Hardware & Equipment">Hardware & Equipment</option>
+              <option value="Office Supplies">Office Supplies</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Cost Center *</label>
+            <select id="expCostCenter" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white font-mono focus:outline-none focus:border-emerald-500">
+              <option value="CC-ENG-402">CC-ENG-402 (Engineering)</option>
+              <option value="CC-DES-105">CC-DES-105 (Design)</option>
+              <option value="CC-EXEC-001">CC-EXEC-001 (Executive)</option>
+              <option value="CC-SALES-201">CC-SALES-201 (Sales)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Upload Receipt (PDF / PNG / JPG)</label>
+          <div class="border-2 border-dashed border-slate-800 hover:border-emerald-500/50 rounded-xl p-4 text-center cursor-pointer bg-slate-950/50">
+            <i data-lucide="upload-cloud" class="w-6 h-6 text-emerald-400 mx-auto mb-1"></i>
+            <span class="text-slate-400 block text-[11px]">Click or drag receipt file here to attach</span>
+            <span id="uploadedReceiptName" class="text-emerald-400 font-mono text-[10px] mt-1 block"></span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+          <button type="button" onclick="closeModal('expenseModal')" class="px-4 py-2 rounded-lg text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-5 py-2 rounded-lg shadow-lg shadow-emerald-600/20">Submit Claim</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 2: ADD VENDOR BILL                                              -->
+  <!-- ===================================================================== -->
+  <div id="billModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i data-lucide="file-plus" class="w-4 h-4 text-cyan-400"></i> Record Vendor Invoice & Bill
+        </h3>
+        <button onclick="closeModal('billModal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form id="billForm" onsubmit="handleCreateBill(event)" class="space-y-4 text-xs">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Vendor Name *</label>
+            <input type="text" id="billVendor" required placeholder="e.g. Amazon Web Services, Figma Inc" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-cyan-500" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Invoice Number *</label>
+            <input type="text" id="billInvoiceNo" required placeholder="INV-2026-9041" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white font-mono focus:outline-none focus:border-cyan-500" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Amount ($) *</label>
+            <input type="number" step="0.01" id="billAmount" required placeholder="0.00" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white font-mono focus:outline-none focus:border-cyan-500" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Due Date *</label>
+            <input type="date" id="billDueDate" required class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-cyan-500" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Category *</label>
+            <select id="billCategory" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-cyan-500">
+              <option value="Cloud Hosting">Cloud Hosting</option>
+              <option value="SaaS Subscription">SaaS Subscription</option>
+              <option value="Office Lease">Office Lease</option>
+              <option value="Hardware Procurement">Hardware Procurement</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Recurring Schedule</label>
+            <select id="billSchedule" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-cyan-500">
+              <option value="One-Time">One-Time</option>
+              <option value="Monthly">Monthly</option>
+              <option value="Quarterly">Quarterly</option>
+              <option value="Yearly">Yearly</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+          <button type="button" onclick="closeModal('billModal')" class="px-4 py-2 rounded-lg text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold px-5 py-2 rounded-lg shadow-lg shadow-cyan-600/20">Save Vendor Bill</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Application Logic & State Engine -->
+  <script>
+    // -------------------------------------------------------------------------
+    // DATA STORE
+    // -------------------------------------------------------------------------
+    const state = {
+      currentRole: 'FINANCE_ADMIN',
+      expenses: [
+        { id: 'EXP-2026-0891', employee: 'Sarah Jenkins', merchant: 'AWS Cloud Infrastructure', category: 'Software & Cloud', costCenter: 'CC-ENG-402', amount: 4250.00, currency: 'USD', status: 'APPROVED', date: '2026-09-01' },
+        { id: 'EXP-2026-0892', employee: 'David Chen', merchant: 'Figma Enterprise Licenses', category: 'Software & Cloud', costCenter: 'CC-DES-105', amount: 1800.00, currency: 'USD', status: 'FINANCE_REVIEW', date: '2026-09-01' },
+        { id: 'EXP-2026-0893', employee: 'Marcus Aurelius', merchant: 'Leadership Offsite Summit', category: 'Travel & Lodging', costCenter: 'CC-EXEC-001', amount: 12400.00, currency: 'USD', status: 'MANAGER_APPROVED', date: '2026-08-30' },
+        { id: 'EXP-2026-0894', employee: 'Alex Rivera', merchant: 'Dell UltraSharp Monitors', category: 'Hardware & Equipment', costCenter: 'CC-ENG-402', amount: 2350.00, currency: 'USD', status: 'SUBMITTED', date: '2026-08-29' },
+        { id: 'EXP-2026-0895', employee: 'Elena Rostova', merchant: 'Client Dinner & Catering', category: 'Meals & Entertainment', costCenter: 'CC-SALES-201', amount: 640.00, currency: 'USD', status: 'REIMBURSED', date: '2026-08-28' }
+      ],
+      bills: [
+        { id: 'INV-901', invoiceNo: 'INV-2026-AWS-01', vendor: 'Amazon Web Services', category: 'Cloud Hosting', dueDate: '2026-09-15', schedule: 'Monthly', amount: 48500.00, status: 'PENDING_APPROVAL' },
+        { id: 'INV-902', invoiceNo: 'INV-2026-FIG-99', vendor: 'Figma Inc', category: 'SaaS Subscription', dueDate: '2026-09-20', schedule: 'Yearly', amount: 12400.00, status: 'APPROVED' },
+        { id: 'INV-903', invoiceNo: 'INV-2026-GGL-42', vendor: 'Google Workspace', category: 'SaaS Subscription', dueDate: '2026-09-25', schedule: 'Monthly', amount: 8900.00, status: 'PAID' },
+        { id: 'INV-904', invoiceNo: 'INV-2026-WWRK-10', vendor: 'WeWork Office Space', category: 'Office Lease', dueDate: '2026-10-01', schedule: 'Monthly', amount: 14320.00, status: 'SCHEDULED' }
+      ],
+      budgets: [
+        { department: 'Engineering', costCenter: 'CC-ENG-402', allocated: 250000.00, spent: 178000.00, threshold: 71 },
+        { department: 'Executive & Admin', costCenter: 'CC-EXEC-001', allocated: 150000.00, spent: 112000.00, threshold: 74 },
+        { department: 'Design & Product', costCenter: 'CC-DES-105', allocated: 100000.00, spent: 50000.00, threshold: 50 }
+      ],
+      auditLogs: [
+        { id: 'AUD-8921', timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19), actor: 'Gandhiko Marala (Finance)', action: 'APPROVE', entity: 'EXPENSE_CLAIM', transition: 'FINANCE_REVIEW -> APPROVED' },
+        { id: 'AUD-8920', timestamp: '2026-09-02 05:40:12', actor: 'Marcus Aurelius (Manager)', action: 'APPROVE', entity: 'EXPENSE_CLAIM', transition: 'SUBMITTED -> MANAGER_APPROVED' },
+        { id: 'AUD-8919', timestamp: '2026-09-02 04:12:44', actor: 'Sarah Jenkins (Employee)', action: 'SUBMIT', entity: 'EXPENSE_CLAIM', transition: 'DRAFT -> SUBMITTED' }
+      ]
+    };
+
+    // -------------------------------------------------------------------------
+    // ROLE SWITCHING LOGIC
+    // -------------------------------------------------------------------------
+    const roleProfiles = {
+      'EMPLOYEE': {
+        name: 'Sarah Jenkins',
+        avatar: 'SJ',
+        tag: 'EMPLOYEE',
+        description: 'Submit expense claims, upload receipts, track reimbursement status, and view personal spending history.'
+      },
+      'MANAGER': {
+        name: 'Marcus Aurelius',
+        avatar: 'MA',
+        tag: 'MANAGER',
+        description: 'Review pending team expense claims, approve or reject submissions, and manage department budget allocations.'
+      },
+      'FINANCE_ADMIN': {
+        name: 'Gandhiko Marala',
+        avatar: 'GM',
+        tag: 'FINANCE_ADMIN',
+        description: 'Full financial oversight, vendor bill payments, budget allocations, final reimbursement settlements, and audit inspection.'
+      },
+      'AUDITOR': {
+        name: 'Compliance Officer',
+        avatar: 'CO',
+        tag: 'AUDITOR',
+        description: 'Read-only immutable financial audit ledger inspection, SOC2 compliance checks, and statutory reports.'
+      }
+    };
+
+    function changeRole(role) {
+      state.currentRole = role;
+      const profile = roleProfiles[role] || roleProfiles['FINANCE_ADMIN'];
+      document.getElementById('roleName').textContent = profile.name;
+      document.getElementById('roleAvatar').textContent = profile.avatar;
+      document.getElementById('roleTag').textContent = profile.tag;
+      document.getElementById('roleDescription').textContent = profile.description;
+
+      showToast(`Switched active persona to ${profile.tag} (${profile.name})`, 'info');
+      renderAll();
+    }
+
+    // -------------------------------------------------------------------------
+    // TAB NAVIGATION
+    // -------------------------------------------------------------------------
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-emerald-400', 'bg-slate-800/80');
+        btn.classList.add('text-slate-400');
+      });
+
+      const activeSection = document.getElementById(`tab-${tabName}`);
+      if (activeSection) activeSection.classList.remove('hidden');
+
+      const activeNav = document.getElementById(`nav-${tabName}`);
+      if (activeNav) {
+        activeNav.classList.remove('text-slate-400');
+        activeNav.classList.add('text-emerald-400', 'bg-slate-800/80');
+      }
+
+      renderAll();
+    }
+
+    // -------------------------------------------------------------------------
+    // RENDERING FUNCTIONS
+    // -------------------------------------------------------------------------
+    function getStatusBadge(status) {
+      const map = {
+        'APPROVED': 'bg-emerald-950 text-emerald-400 border-emerald-800',
+        'SUBMITTED': 'bg-blue-950 text-blue-400 border-blue-800',
+        'MANAGER_APPROVED': 'bg-cyan-950 text-cyan-400 border-cyan-800',
+        'FINANCE_REVIEW': 'bg-amber-950 text-amber-400 border-amber-800',
+        'REJECTED': 'bg-rose-950 text-rose-400 border-rose-800',
+        'REIMBURSED': 'bg-purple-950 text-purple-400 border-purple-800',
+        'DRAFT': 'bg-slate-800 text-slate-400 border-slate-700',
+        'PAID': 'bg-emerald-950 text-emerald-400 border-emerald-800',
+        'SCHEDULED': 'bg-indigo-950 text-indigo-400 border-indigo-800',
+        'PENDING_APPROVAL': 'bg-amber-950 text-amber-400 border-amber-800'
+      };
+      return `<span class="px-2 py-0.5 rounded text-[10px] font-bold border ${map[status] || 'bg-slate-800 text-slate-400'}">${status}</span>`;
+    }
+
+    function renderAll() {
+      renderDashboardExpenses();
+      renderFullExpenses();
+      renderApprovals();
+      renderBills();
+      renderBudgets();
+      renderSettlementQueue();
+      renderAuditLogs();
+      lucide.createIcons();
+    }
+
+    function renderDashboardExpenses() {
+      const tbody = document.getElementById('dashboardExpensesTbody');
+      tbody.innerHTML = state.expenses.slice(0, 5).map(e => `
+        <tr class="hover:bg-slate-800/40 transition-all">
+          <td class="py-3 px-4 font-bold text-emerald-400">${e.id}</td>
+          <td class="py-3 px-4 text-white">${e.employee}</td>
+          <td class="py-3 px-4">${e.merchant}</td>
+          <td class="py-3 px-4">${e.costCenter}</td>
+          <td class="py-3 px-4 font-bold text-white">$${e.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+          <td class="py-3 px-4">${getStatusBadge(e.status)}</td>
+          <td class="py-3 px-4 text-right">
+            ${getActionButtons(e)}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderFullExpenses() {
+      const tbody = document.getElementById('fullExpensesTbody');
+      tbody.innerHTML = state.expenses.map(e => `
+        <tr class="hover:bg-slate-800/40 transition-all">
+          <td class="py-3 px-4 font-bold text-emerald-400">${e.id}</td>
+          <td class="py-3 px-4 text-slate-400">${e.date}</td>
+          <td class="py-3 px-4 text-white">${e.employee}</td>
+          <td class="py-3 px-4">${e.merchant}</td>
+          <td class="py-3 px-4 text-slate-400">${e.category}</td>
+          <td class="py-3 px-4">${e.costCenter}</td>
+          <td class="py-3 px-4 font-bold text-white">$${e.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+          <td class="py-3 px-4">${getStatusBadge(e.status)}</td>
+          <td class="py-3 px-4 text-right">
+            ${getActionButtons(e)}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function getActionButtons(e) {
+      if (state.currentRole === 'MANAGER' && (e.status === 'SUBMITTED')) {
+        return `
+          <button onclick="approveClaim('${e.id}')" class="px-2 py-1 bg-emerald-600/20 text-emerald-400 rounded hover:bg-emerald-600/30 font-bold mr-1">Approve</button>
+          <button onclick="rejectClaim('${e.id}')" class="px-2 py-1 bg-rose-600/20 text-rose-400 rounded hover:bg-rose-600/30 font-bold">Reject</button>
+        `;
+      }
+      if (state.currentRole === 'FINANCE_ADMIN' && (e.status === 'MANAGER_APPROVED' || e.status === 'FINANCE_REVIEW')) {
+        return `
+          <button onclick="approveClaim('${e.id}')" class="px-2 py-1 bg-emerald-600/20 text-emerald-400 rounded hover:bg-emerald-600/30 font-bold mr-1">Final Approve</button>
+          <button onclick="rejectClaim('${e.id}')" class="px-2 py-1 bg-rose-600/20 text-rose-400 rounded hover:bg-rose-600/30 font-bold">Reject</button>
+        `;
+      }
+      return `<button onclick="viewReceipt('${e.id}')" class="text-slate-400 hover:text-slate-200"><i data-lucide="eye" class="w-4 h-4 inline"></i></button>`;
+    }
+
+    function renderApprovals() {
+      const container = document.getElementById('approvalsList');
+      const pending = state.expenses.filter(e => e.status === 'SUBMITTED' || e.status === 'MANAGER_APPROVED' || e.status === 'FINANCE_REVIEW');
+      
+      document.getElementById('badge-approvals').textContent = pending.length;
+      document.getElementById('kpi-pending-count').textContent = `${pending.length} claims`;
+
+      if (pending.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-slate-500 bg-slate-900/40 rounded-xl border border-slate-800">No pending approvals awaiting your decision.</div>`;
+        return;
+      }
+
+      container.innerHTML = pending.map(e => `
+        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-emerald-400 font-mono">${e.id}</span>
+              <span class="text-white font-semibold">${e.merchant}</span>
+              ${getStatusBadge(e.status)}
+            </div>
+            <p class="text-xs text-slate-400">Claimant: <strong class="text-slate-200">${e.employee}</strong> | Category: ${e.category} | Cost Center: <span class="font-mono text-cyan-400">${e.costCenter}</span></p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="text-right">
+              <div class="text-xl font-bold font-mono text-white">$${e.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}</div>
+              <span class="text-[10px] text-slate-500 font-mono">Multi-Stage Policy: Active</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="approveClaim('${e.id}')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold rounded-lg text-xs shadow-lg shadow-emerald-600/20">Approve</button>
+              <button onclick="rejectClaim('${e.id}')" class="px-3 py-1.5 bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 font-bold rounded-lg text-xs border border-rose-600/40">Reject</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderBills() {
+      const tbody = document.getElementById('billsTbody');
+      tbody.innerHTML = state.bills.map(b => `
+        <tr class="hover:bg-slate-800/40 transition-all">
+          <td class="py-3 px-4 font-bold text-cyan-400">${b.invoiceNo}</td>
+          <td class="py-3 px-4 text-white font-semibold">${b.vendor}</td>
+          <td class="py-3 px-4">${b.category}</td>
+          <td class="py-3 px-4 text-slate-400">${b.dueDate}</td>
+          <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300 font-mono">${b.schedule}</span></td>
+          <td class="py-3 px-4 font-bold text-white">$${b.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+          <td class="py-3 px-4">${getStatusBadge(b.status)}</td>
+          <td class="py-3 px-4 text-right">
+            ${b.status !== 'PAID' ? `<button onclick="settleBill('${b.id}')" class="px-2.5 py-1 bg-cyan-600/20 text-cyan-400 hover:bg-cyan-600/30 rounded font-bold">Pay Now</button>` : `<span class="text-emerald-400 text-xs">Settled</span>`}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderBudgets() {
+      const grid = document.getElementById('budgetsGrid');
+      grid.innerHTML = state.budgets.map(b => {
+        const remaining = b.allocated - b.spent;
+        const isWarning = b.threshold >= 70;
+        return `
+          <div class="p-6 bg-slate-900 border border-slate-800 rounded-2xl space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-base font-bold text-white">${b.department}</h3>
+                <span class="text-xs font-mono text-cyan-400">${b.costCenter}</span>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isWarning ? 'bg-amber-950 text-amber-400 border border-amber-800' : 'bg-emerald-950 text-emerald-400 border border-emerald-800'}">${b.threshold}% Utilized</span>
+            </div>
+
+            <div class="w-full bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800">
+              <div class="h-full rounded-full ${isWarning ? 'bg-gradient-to-r from-amber-500 to-orange-500' : 'bg-gradient-to-r from-emerald-500 to-teal-400'}" style="width: ${b.threshold}%"></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 text-center font-mono text-xs pt-2 border-t border-slate-800/80">
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase">Allocated</span>
+                <div class="font-bold text-white mt-0.5">$${(b.allocated/1000).toFixed(0)}k</div>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase">Consumed</span>
+                <div class="font-bold text-amber-400 mt-0.5">$${(b.spent/1000).toFixed(0)}k</div>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase">Remaining</span>
+                <div class="font-bold text-emerald-400 mt-0.5">$${(remaining/1000).toFixed(0)}k</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderSettlementQueue() {
+      const tbody = document.getElementById('settlementTbody');
+      const approved = state.expenses.filter(e => e.status === 'APPROVED');
+      
+      if (approved.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500">All approved expenses have been reimbursed and settled.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = approved.map(e => `
+        <tr class="hover:bg-slate-800/40 transition-all">
+          <td class="py-3 px-4 font-bold text-purple-400">${e.id}</td>
+          <td class="py-3 px-4 text-white font-semibold">${e.employee}</td>
+          <td class="py-3 px-4 text-slate-400">ACH-****-7819</td>
+          <td class="py-3 px-4">${e.category}</td>
+          <td class="py-3 px-4 font-bold text-white">$${e.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+          <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-purple-950 text-purple-400 border border-purple-800 text-[10px] font-bold">READY_ACH</span></td>
+          <td class="py-3 px-4 text-right">
+            <button onclick="disburseSingle('${e.id}')" class="px-3 py-1 bg-purple-600 hover:bg-purple-500 text-white rounded font-bold text-xs shadow-md">Pay Employee</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderAuditLogs() {
+      const tbody = document.getElementById('auditLogsTbody');
+      tbody.innerHTML = state.auditLogs.map(l => `
+        <tr class="hover:bg-slate-800/40 transition-all">
+          <td class="py-3 px-4 font-bold text-slate-400">${l.id}</td>
+          <td class="py-3 px-4 text-slate-400">${l.timestamp}</td>
+          <td class="py-3 px-4 text-white font-semibold">${l.actor}</td>
+          <td class="py-3 px-4 text-emerald-400 font-bold">${l.action}</td>
+          <td class="py-3 px-4 text-cyan-400">${l.entity}</td>
+          <td class="py-3 px-4 text-slate-300 font-mono text-[11px]">${l.transition}</td>
+        </tr>
+      `).join('');
+    }
+
+    // -------------------------------------------------------------------------
+    // ACTION HANDLERS
+    // -------------------------------------------------------------------------
+    function handleCreateExpense(e) {
+      e.preventDefault();
+      const merchant = document.getElementById('expMerchant').value;
+      const amount = parseFloat(document.getElementById('expAmount').value);
+      const currency = document.getElementById('expCurrency').value;
+      const category = document.getElementById('expCategory').value;
+      const costCenter = document.getElementById('expCostCenter').value;
+
+      const newId = `EXP-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      const claimant = roleProfiles[state.currentRole]?.name || 'Sarah Jenkins';
+
+      const claim = {
+        id: newId,
+        employee: claimant,
+        merchant,
+        category,
+        costCenter,
+        amount,
+        currency,
+        status: 'SUBMITTED',
+        date: new Date().toISOString().substring(0, 10)
+      };
+
+      state.expenses.unshift(claim);
+      addAuditLog(claimant, 'SUBMIT', 'EXPENSE_CLAIM', `NEW -> SUBMITTED (${newId}: $${amount})`);
+      closeModal('expenseModal');
+      document.getElementById('expenseForm').reset();
+      showToast(`Expense claim ${newId} submitted successfully!`, 'success');
+      renderAll();
+    }
+
+    function handleCreateBill(e) {
+      e.preventDefault();
+      const vendor = document.getElementById('billVendor').value;
+      const invoiceNo = document.getElementById('billInvoiceNo').value;
+      const amount = parseFloat(document.getElementById('billAmount').value);
+      const dueDate = document.getElementById('billDueDate').value;
+      const category = document.getElementById('billCategory').value;
+      const schedule = document.getElementById('billSchedule').value;
+
+      const newBill = {
+        id: `INV-${Math.floor(100 + Math.random() * 900)}`,
+        invoiceNo,
+        vendor,
+        category,
+        dueDate,
+        schedule,
+        amount,
+        status: 'PENDING_APPROVAL'
+      };
+
+      state.bills.unshift(newBill);
+      addAuditLog(roleProfiles[state.currentRole]?.name || 'Admin', 'CREATE', 'VENDOR_BILL', `NEW -> PENDING (${invoiceNo}: $${amount})`);
+      closeModal('billModal');
+      document.getElementById('billForm').reset();
+      showToast(`Vendor bill ${invoiceNo} recorded successfully!`, 'success');
+      renderAll();
+    }
+
+    function approveClaim(id) {
+      const claim = state.expenses.find(e => e.id === id);
+      if (!claim) return;
+
+      const actor = roleProfiles[state.currentRole]?.name || 'Finance Admin';
+      const prevStatus = claim.status;
+
+      if (claim.status === 'SUBMITTED') {
+        claim.status = 'MANAGER_APPROVED';
+      } else if (claim.status === 'MANAGER_APPROVED' || claim.status === 'FINANCE_REVIEW') {
+        claim.status = 'APPROVED';
+      }
+
+      addAuditLog(actor, 'APPROVE', 'EXPENSE_CLAIM', `${prevStatus} -> ${claim.status} (${id})`);
+      showToast(`Claim ${id} approved (${claim.status})`, 'success');
+      renderAll();
+    }
+
+    function rejectClaim(id) {
+      const claim = state.expenses.find(e => e.id === id);
+      if (!claim) return;
+
+      const actor = roleProfiles[state.currentRole]?.name || 'Finance Admin';
+      const prevStatus = claim.status;
+      claim.status = 'REJECTED';
+
+      addAuditLog(actor, 'REJECT', 'EXPENSE_CLAIM', `${prevStatus} -> REJECTED (${id})`);
+      showToast(`Claim ${id} rejected`, 'error');
+      renderAll();
+    }
+
+    function settleBill(id) {
+      const bill = state.bills.find(b => b.id === id);
+      if (!bill) return;
+
+      bill.status = 'PAID';
+      addAuditLog(roleProfiles[state.currentRole]?.name || 'Finance', 'PAYMENT', 'VENDOR_BILL', `UNPAID -> PAID (${bill.invoiceNo})`);
+      showToast(`Vendor bill ${bill.invoiceNo} paid via corporate ACH wire!`, 'success');
+      renderAll();
+    }
+
+    function disburseSingle(id) {
+      const claim = state.expenses.find(e => e.id === id);
+      if (!claim) return;
+
+      claim.status = 'REIMBURSED';
+      addAuditLog('Automated ACH Broker', 'DISBURSEMENT', 'PAYMENT', `SETTLED -> REIMBURSED (${id}: $${claim.amount})`);
+      showToast(`Reimbursement of $${claim.amount} disbursed to ${claim.employee}!`, 'success');
+      renderAll();
+    }
+
+    function settleAllApproved() {
+      const approved = state.expenses.filter(e => e.status === 'APPROVED');
+      if (approved.length === 0) {
+        showToast('No approved claims awaiting settlement.', 'info');
+        return;
+      }
+      approved.forEach(e => {
+        e.status = 'REIMBURSED';
+        addAuditLog('Automated ACH Broker', 'BATCH_DISBURSE', 'PAYMENT', `SETTLED -> REIMBURSED (${e.id})`);
+      });
+      showToast(`Batch ACH payout of ${approved.length} claims executed successfully!`, 'success');
+      renderAll();
+    }
+
+    function addAuditLog(actor, action, entity, transition) {
+      state.auditLogs.unshift({
+        id: `AUD-${Math.floor(1000 + Math.random() * 9000)}`,
+        timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+        actor,
+        action,
+        entity,
+        transition
+      });
+    }
+
+    function exportToCSV() {
+      const headers = ["Claim ID", "Date", "Employee", "Merchant", "Category", "Cost Center", "Amount", "Currency", "Status"];
+      const rows = state.expenses.map(e => [e.id, e.date, `"${e.employee}"`, `"${e.merchant}"`, `"${e.category}"`, e.costCenter, e.amount, e.currency, e.status]);
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+      
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `finflow_general_ledger_${new Date().toISOString().substring(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('General ledger spreadsheet exported to CSV!', 'success');
+    }
+
+    function filterExpenses() {
+      const q = document.getElementById('expenseSearch').value.toLowerCase();
+      const st = document.getElementById('expenseStatusFilter').value;
+
+      const filtered = state.expenses.filter(e => {
+        const matchesQ = e.id.toLowerCase().includes(q) || e.merchant.toLowerCase().includes(q) || e.employee.toLowerCase().includes(q) || e.costCenter.toLowerCase().includes(q);
+        const matchesStatus = st === 'ALL' || e.status === st;
+        return matchesQ && matchesStatus;
+      });
+
+      const tbody = document.getElementById('fullExpensesTbody');
+      tbody.innerHTML = filtered.map(e => `
+        <tr class="hover:bg-slate-800/40 transition-all">
+          <td class="py-3 px-4 font-bold text-emerald-400">${e.id}</td>
+          <td class="py-3 px-4 text-slate-400">${e.date}</td>
+          <td class="py-3 px-4 text-white">${e.employee}</td>
+          <td class="py-3 px-4">${e.merchant}</td>
+          <td class="py-3 px-4 text-slate-400">${e.category}</td>
+          <td class="py-3 px-4">${e.costCenter}</td>
+          <td class="py-3 px-4 font-bold text-white">$${e.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+          <td class="py-3 px-4">${getStatusBadge(e.status)}</td>
+          <td class="py-3 px-4 text-right">${getActionButtons(e)}</td>
+        </tr>
+      `).join('');
+    }
+
+    function viewReceipt(id) {
+      showToast(`Receipt for ${id} verified via S3/MinIO blob storage`, 'info');
+    }
+
+    // Modal Helpers
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    // Toast Alert
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      const colors = {
+        'success': 'bg-emerald-950 text-emerald-300 border-emerald-800',
+        'error': 'bg-rose-950 text-rose-300 border-rose-800',
+        'info': 'bg-slate-900 text-slate-200 border-slate-700'
+      };
+      toast.className = `p-3 px-4 rounded-xl border ${colors[type]} shadow-2xl text-xs font-semibold flex items-center gap-2 pointer-events-auto transition-all animate-bounce`;
+      toast.innerHTML = `<i data-lucide="bell" class="w-4 h-4"></i> <span>${message}</span>`;
+      container.appendChild(toast);
+      lucide.createIcons();
+      setTimeout(() => { toast.remove(); }, 3500);
+    }
+
+    // Init on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderAll();
+    });
+  </script>
+</body>
 </html>
